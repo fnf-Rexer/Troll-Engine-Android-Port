@@ -1,0 +1,22 @@
+var game;
+game = PlayState.instance;
+
+function onAnimPlayed(animName, force, reversed, frame)
+{
+    if (StringTools.startsWith(animName, 'hair'))
+    {
+        this.specialAnim = true;
+        this.skipDance = true;
+        this.danced = true;
+    }
+    if (game.dad.curCharacter == 'gf') game.gf.alpha = 0; 
+}
+
+function onSpecialAnimFinished(name)
+{
+    if (name == "hairFall"){
+        this.playAnim("danceRight", true);
+        this.skipDance = false;
+        this.danced = false;
+    }
+}
